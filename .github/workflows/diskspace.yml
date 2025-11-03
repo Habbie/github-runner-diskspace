@@ -25,6 +25,7 @@ jobs:
     runs-on: ${{ matrix.runs-on }}
     container:
       image: alpine:3.22
+      options: -v /:/hostroot
 
     steps:
       - run: |
