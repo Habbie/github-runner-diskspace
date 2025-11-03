@@ -34,6 +34,9 @@ jobs:
           df -h / | tail -1 > /tmp/df-before
       - run: apk add cmd:lsblk && lsblk
       - run: du -x /hostroot | sort -n | tail -n 5000
+      - run: rm -rf /hostroot/usr/local/lib/android
+      - run: rm -rf /hostroot/usr/local/.ghcup
+      - run: rm -rf /hostroot/usr/share/dotnet/sdk
       - run: |
           df -h
           echo ::notice ::$(cat /tmp/df-before) '->' $(df -h / | tail -1)
