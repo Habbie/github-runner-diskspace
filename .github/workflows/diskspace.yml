@@ -14,9 +14,9 @@ jobs:
     runs-on: ${{ matrix.runs-on }}
 
     steps:
-    - run: df -h
-    - run: lsblk
-    - run: du -x / | sort -n | tail -n 5000
+      - run: df -h
+      - run: lsblk
+      - run: du -x / | sort -n | tail -n 5000
 
   docker:
     strategy:
@@ -29,13 +29,13 @@ jobs:
       options: --name mycontainer ${{ matrix.privileged }} -v /:/hostroot
 
     steps:
-    - run: |
-      df -h
-      echo ::notice ::free space before
-      df -h / | sed 's/^/::notice ::'
-    - run: apk add cmd:lsblk && lsblk
-    - run: du -x / | sort -n | tail -n 5000
-    - run: |
-      df -h
-      echo ::notice ::free space after
-      df -h / | sed 's/^/::notice ::'
+      - run: |
+          df -h
+          echo ::notice ::free space before
+          df -h / | sed 's/^/::notice ::'
+      - run: apk add cmd:lsblk && lsblk
+      - run: du -x / | sort -n | tail -n 5000
+      - run: |
+          df -h
+          echo ::notice ::free space after
+          df -h / | sed 's/^/::notice ::'
