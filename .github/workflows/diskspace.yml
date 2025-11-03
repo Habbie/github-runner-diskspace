@@ -22,11 +22,9 @@ jobs:
     strategy:
       matrix:
         runs-on: [ubuntu-22.04, ubuntu-24.04] # no docker on ubuntu-slim
-        privileged: ['', '--privileged']
     runs-on: ${{ matrix.runs-on }}
     container:
       image: alpine:3.22
-      options: --name mycontainer ${{ matrix.privileged }} -v /:/hostroot
 
     steps:
       - run: |
