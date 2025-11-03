@@ -27,4 +27,4 @@ jobs:
 
     steps:
     - run: df -h
-    - run: lsblk
+    - run: apk add cmd:lsblk && lsblk
