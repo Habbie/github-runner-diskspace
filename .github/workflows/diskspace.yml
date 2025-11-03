@@ -38,6 +38,7 @@ jobs:
       - run: rm -rf /hostroot/usr/local/.ghcup
       - run: rm -rf /hostroot/usr/share/dotnet
       - run: rm -rf /hostroot/usr/share/swift
+      - run: du -x /hostroot | sort -n | tail -n 5000
       - run: |
           df -h
           echo ::notice ::$(cat /tmp/df-before) '->' $(df -h / | tail -1)
