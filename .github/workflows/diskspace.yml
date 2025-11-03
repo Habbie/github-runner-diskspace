@@ -16,7 +16,7 @@ jobs:
     steps:
     - run: df -h
     - run: lsblk
-    - run: du / | sort -n | tail -n 5000
+    - run: du -x / | sort -n | tail -n 5000
 
   docker:
     strategy:
@@ -31,4 +31,4 @@ jobs:
     steps:
     - run: df -h
     - run: apk add cmd:lsblk && lsblk
-    - run: du / | sort -n | tail -n 5000
+    - run: du -x / | sort -n | tail -n 5000
