@@ -1,0 +1,17 @@
+name: "Check free diskspace, try to improve the situation"
+
+on:
+  push:
+
+permissions: # least privileges, see https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions
+  contents: read
+
+jobs:
+  bare-vm:
+    strategy:
+      matrix:
+        runs-on: [ubuntu-slim, ubuntu-22.04, ubuntu-24.04]
+    runs-on: ${{ matrix.runs-on }}
+
+    steps:
+    - run: df -h
