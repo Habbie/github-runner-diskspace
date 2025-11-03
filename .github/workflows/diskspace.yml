@@ -32,10 +32,10 @@ jobs:
       - run: |
           df -h
           echo ::notice ::free space before
-          df -h / | sed 's/^/::notice ::'
+          df -h / | sed 's/^/::notice ::/'
       - run: apk add cmd:lsblk && lsblk
       - run: du -x / | sort -n | tail -n 5000
       - run: |
           df -h
           echo ::notice ::free space after
-          df -h / | sed 's/^/::notice ::'
+          df -h / | sed 's/^/::notice ::/'
