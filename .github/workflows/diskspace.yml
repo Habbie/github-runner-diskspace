@@ -16,3 +16,15 @@ jobs:
     steps:
     - run: df -h
     - run: lsblk
+
+  docker:
+    strategy:
+      matrix:
+        runs-on: [ubuntu-slim, ubuntu-22.04, ubuntu-24.04]
+    runs-on: ${{ matrix.runs-on }}
+    container:
+      image: alpine:3.22
+
+    steps:
+    - run: df -h
+    - run: lsblk
